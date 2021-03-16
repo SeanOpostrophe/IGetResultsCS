@@ -8,8 +8,8 @@ import (
 
 func main() {
 	rand.Seed(time.Now().Unix())
-	var stat1 int = 6
-	var stat2 int = 6
+	var stat1 int = 1
+	var stat2 int = 1
 	var chk1 int = rand.Intn(stat1) + 1
 	var chk2 int = rand.Intn(stat2) + 1
 	var chkt int = chk1 + chk2
