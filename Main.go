@@ -36,7 +36,7 @@ func main() {
 		}
 		if heatT == 1 {
 			col = col + 1
-			fmt.PrintLn("and the heat generated", heatT, "for a total of", (resultT + heatT), col, "collateral was generated")
+			fmt.Println("and the heat generated", heatT, "for a total of", (resultT + heatT), col, "collateral was generated")
 		}
 	}
 }
