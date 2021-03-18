@@ -8,8 +8,8 @@ import (
 
 func main() {
 	rand.Seed(time.Now().Unix())
-	var die1 int = 1
-	var die2 int = 1
+	var die1 int = 6
+	var die2 int = 12
 	var result1 int = rand.Intn(die1) + 1
 	var result2 int = rand.Intn(die2) + 1
 	var resultT int = result1 + result2
@@ -27,16 +27,19 @@ func main() {
 		col = col + 1
 	}
 	fmt.Println("You rolled a", resultT)
-	var heatlvl int = 0
-	heat := [8]int{0, 10, 12, 10, 8, 6, 4, 1}
+	var heatlvl int = 4
+	var heatT int = 0
+	heat := 8 //[8]int{0, 10, 12, 10, 8, 6, 4, 1}
 	for h := 0; h <= heatlvl; h++ {
-		var heatT int = rand.Intn(heat)
-		if heatT == heat[h] {
+		var heatGen int = rand.Intn(heat)
+		heatT = heatT + heatGen
+		if heatGen == heat /*[h]*/ {
 			col = col + 1
 		}
-		if heatT == 1 {
+		if heatGen == 1 {
 			col = col + 1
-			fmt.Println("and the heat generated", heatT, "for a total of", (resultT + heatT), col, "collateral was generated")
+
 		}
 	}
+	fmt.Println("and the heat generated", heatT, "for a total of", (resultT + heatT), "and", col, "collateral was generated")
 }
