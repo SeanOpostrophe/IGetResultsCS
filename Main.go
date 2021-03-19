@@ -19,10 +19,12 @@ func main() {
 	}
 	programName := os.Args[0]
 	dieOne := os.Args[1]
-	dieTwo := os.Args[1:][1]
-	fmt.Println("You entered a", dieOne, "and a", dieTwo, "for ", programName)
+	dieTwo := os.Args[2]
+	var heatInput = os.Args[3]
+	fmt.Println("You entered a", dieOne, "and a", dieTwo, " and set the heat level to", heatInput, " for ", programName)
 	die1, _ := strconv.Atoi(dieOne)
 	die2, _ := strconv.Atoi(dieTwo)
+	heatLvl, _ := strconv.Atoi(heatInput)
 
 	rand.Seed(time.Now().Unix())
 
@@ -45,6 +47,17 @@ func main() {
 	if roll2 == dieTwoSides {
 		col = col + 1
 	}
-	fmt.Println("You rolled a", roll1, "and a", roll2, "for a total of", rollt, "and caused", col, "collateral")
-
+	var heatT int = 0
+	heat := 8 //[8]int{0, 10, 12, 10, 8, 6, 4, 1}
+	for h := 0; h <= heatLvl; h++ {
+		var heatGen int = rand.Intn(heat)
+		heatT = heatT + heatGen
+		if heatGen == heat /*[h]*/ {
+			col = col + 1
+		}
+		if heatGen == 1 {
+			col = col + 1
+		}
+	}
+	fmt.Println("You rolled a", roll1, "and a", roll2, "and the heat generated", heatT, "for a total of", (rollt + heatT), "and caused", col, "collateral")
 }
