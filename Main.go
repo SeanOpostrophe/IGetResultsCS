@@ -7,6 +7,13 @@ import (
 )
 
 func main() {
+	argLength := len(os.Args[1:])
+	// use fmt.Printf() to format string
+	fmt.Printf("Arg length is %d", argLength) 
+	for i, a := range os.Args[1:] {
+        fmt.Printf("Arg %d is %s\n", i+1, a) 
+	}
+	
 	rand.Seed(time.Now().Unix())
 	var die1 int = 6
 	var die2 int = 12
