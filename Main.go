@@ -48,11 +48,13 @@ func main() {
 		col = col + 1
 	}
 	var heatT int = 0
-	heat := 8 //[8]int{0, 10, 12, 10, 8, 6, 4, 1}
+	heatLvlDie := 8 //[8]int{0, 10, 12, 10, 8, 6, 4, 1}
+
 	for h := 0; h <= heatLvl; h++ {
-		var heatGen int = rand.Intn(heat)
+		var heatDie int = heatLvlDie //[h]
+		var heatGen int = rand.Intn(heatDie)
 		heatT = heatT + heatGen
-		if heatGen == heat /*[h]*/ {
+		if heatGen == heatDie {
 			col = col + 1
 		}
 		if heatGen == 1 {
