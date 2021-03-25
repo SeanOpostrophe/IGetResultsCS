@@ -55,21 +55,26 @@ func collateral(roll1 int, roll2 int, dieOneSides int, dieTwoSides int) int {
 	}
 	return col
 }
-func calculateHeat(heatLvl int) (col2 int, heatTotal int) {
-	heatTotal = 0
-	col2 = 0
-	heatLvlDie := [8]int{10, 12, 10, 8, 6, 4, 1}
-	for h := 0; h <= heatLvl; h++ {
 
-		var heatDie int = heatLvlDie[h]
-		var heatGen int = rand.Intn(heatDie) + 1
-		heatTotal = heatTotal + heatGen
-		fmt.Println("heat gen is", heatGen, "out of", heatDie)
-		if heatGen == heatDie {
-			col2 = col2 + 1
-		}
-		if heatGen == 1 {
-			col2 = col2 + 1
+func calculateHeat(heatLvl int) (col2 int, heatTotal int) {
+	if heatLvl == 0 {
+		fmt.Println("and there was no heat")
+	} else {
+		heatTotal = 0
+		col2 = 0
+		heatLvlDie := [8]int{10, 12, 10, 8, 6, 4, 1}
+		for h := 1; h <= heatLvl; h++ {
+
+			var heatDie int = heatLvlDie[h-1]
+			var heatGen int = rand.Intn(heatDie) + 1
+			heatTotal = heatTotal + heatGen
+			fmt.Println("heat gen is", heatGen, "out of", heatDie)
+			if heatGen == heatDie {
+				col2 = col2 + 1
+			}
+			if heatGen == 1 {
+				col2 = col2 + 1
+			}
 		}
 	}
 	return col2, heatTotal
